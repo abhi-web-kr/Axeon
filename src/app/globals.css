@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+/* @theme {
+   Agar aapko custom colors emerald/slate set karne hain toh yahan karein 
+} */
+
+/* Dark mode toggle support ke liye */
+@variant dark (&:where(.dark, .dark *));
