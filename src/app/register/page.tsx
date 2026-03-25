@@ -24,11 +24,18 @@ function RegisterForm() {
 
         try {
             await axios.post("/api/auth/register", { name, email, password });
-            const loginUrl =
-                callbackUrl !== "/"
-                    ? `/login?callbackUrl=${encodeURIComponent(callbackUrl)}`
-                    : "/login";
-            router.push(loginUrl);
+            // Auto sign-in after registration so user lands on home directly
+            const result = await signIn("credentials", {
+                email,
+                password,
+                redirect: false,
+            });
+            if (result?.ok) {
+                router.push(callbackUrl);
+            } else {
+                // Sign-in failed for some reason, fall back to login page
+                router.push("/login");
+            }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
             setError(
