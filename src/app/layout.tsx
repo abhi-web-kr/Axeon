@@ -12,6 +12,10 @@ const open_Sans = Open_Sans({
 export const metadata: Metadata = {
     title: "Axeon",
     description: "Web Accessibility Auditing Tool",
+    icons: {
+        icon: "/icon.svg",
+        shortcut: "/icon.svg",
+    },
 };
 
 export default function RootLayout({
