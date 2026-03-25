@@ -29,10 +29,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
-
-# Non-root user
-RUN groupadd -r nodejs && useradd -r -g nodejs nextjs
-USER nextjs
+ENV CHROME_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
