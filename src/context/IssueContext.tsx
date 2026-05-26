@@ -40,7 +40,6 @@ export const IssueProvider = ({ children }: { children: ReactNode }) => {
                 : "Failed to scan website";
 
             setError(errorMessage);
-            throw new Error(errorMessage);
         } finally {
             setLoading(false);
         }
